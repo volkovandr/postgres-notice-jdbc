@@ -1,0 +1,38 @@
+buildscript {
+    ext {
+        scalaVersion = '2.13.8'
+    }
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'scala'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.scala-lang:scala-library:${scalaVersion}"
+    implementation 'org.postgresql:postgresql:42.5.1'
+    implementation 'io.projectreactor:reactor-core:3.5.1'
+    implementation 'org.postgresql:r2dbc-postgresql:1.0.0.RELEASE'
+}
+
+testing {
+    suites {
+        test {
+            dependencies {
+                implementation "org.scalatest:scalatest_2.13:3.2.12"
+                implementation "org.scalatestplus:scalatestplus-junit_2.13:1.0.0-M2"
+                implementation "org.testcontainers:postgresql:1.15.2"
+                implementation 'ch.qos.logback:logback-classic:1.4.5'
+                implementation 'io.projectreactor:reactor-test:3.5.1'
+            }
+        }
+    }
+}
+
